@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .dataTable>thead>tr>th {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row text-center">
+            <h1>上市公司基本資料</h1>
+        </div>
+        <div class="row d-inline-block mt-5">
+            資料源自於<a href="https://data.gov.tw/dataset/18419" target="_blank">政府資料開放平臺(上市公司基本資料)</a>
+        </div>
+        <div class="row mt-5">
+            <!-- <div class="input-group mb-3 input-group-lg">
+                <span class="input-group-text">股票代號名稱</span>
+                <input type="search" class="form-control"  placeholder aria-controls="myTable" id="selectInput">
+            </div>
+            <hr> -->
+
+            <table id="myTable" class="display text-center">
+                <thead class="text-center">
+                    <tr>
+                        <th>代號</th>
+                        <th>公司名稱</th>
+                        <th class="d-none">產業別</th>
+                        <th>成立日期</th>
+                        <th>上市日期</th>
+                        <th>資本額</th>
+                        <th>董事長</th>
+                        <th>其他</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./js/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="./js/stockindex.js"></script>
+    <script>
+        $(function () {
+            $("title").text('')
+
+        })
+    </script>
+</body>
+
+
+</html>
