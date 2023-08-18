@@ -1,14 +1,18 @@
 
-let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRlIjoiMjAyMy0wOC0wOSAyMzo1NToxMCIsInVzZXJfaWQiOiJhOTA1NTM4QGdtYWlsLmNvbSIsImlwIjoiMTgyLjIzMy4xMzMuMTc0In0.eLQV2K2n4AHTQizhvP0Wl5qCSbvswNFQLWrh56O46Nw";
+let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRlIjoiMjAyMy0wOC0xOCAxNjowMjo0NCIsInVzZXJfaWQiOiJhOTA1NTM4IiwiaXAiOiIyMjAuMTI4LjEzMy4xMjMifQ.gCnG3XRW2v6XDAjODNCB9iKgsq1lRDslYEAFZQS-Eto";
 let FinMindUrl = "https://api.finmindtrade.com/api/v4/data";
 let url = location.href;
 let stocknum;
+let cashArray=[];
+let stockArray=[];
+let yearArray=[];
 // console.log(url);
 if (url.indexOf('?') != -1) {
     //逐次分割字串，並把分割後陣列值再去分割，最終取得num值
     stocknum = url.split('?')[1].split('&')[0].split('=')[1];
     console.log(stocknum);
 }
+$(".title").text(stocknum);
 CashAjax(stocknum);
 newsAjax(stocknum);
 StaPag3Ajax(stocknum);
@@ -35,7 +39,12 @@ function CashAjax(stocknum) {
         console.log('re1.data', re1.data);
         let cash = '';
         let stock = '';
+        let j=0;
         for (let i = re1.data.length - 1; i >= 0; i--) {
+            cashArray[j]=re1.data[i].CashEarningsDistribution.toFixed(1);
+            stockArray[j]=re1.data[i].StockEarningsDistribution.toFixed(1);
+            yearArray[j]=re1.data[i].CashExDividendTradingDate.substr(0, 4);
+            j++;
             cash += `<tr>`;
             cash += `<td>${re1.data[i].CashExDividendTradingDate.substr(0, 4)}</td>`;
             cash += `<td>${re1.data[i].CashExDividendTradingDate}</td>`;
@@ -98,6 +107,7 @@ function StaPag3Ajax(stocknum) {
         }
         // console.log('data', data);
         let content = '';
+        
         for (let key in data) {
             // console.log(key)
             content += `<tr>`;
